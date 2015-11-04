@@ -1,0 +1,293 @@
+<html lang="es" ng-app="adminHours">
+    <head>
+        <title>Gestión de horas</title>
+        
+        <meta charset="utf-8" />
+        <meta lang="es" />
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+        <script src="app.js"></script>
+        <script src="hourCtrl.js"></script>
+        <script src="menuCtrl.js"></script>
+    </head>
+    
+    <body ng-controller="HourCtrl as work">
+        <div class="container">
+            <div class="page-header">
+                <h1>Controla el tiempo que trabajas</h1>
+                <p class="lead">No trabajes de más ni de menos</p>
+            </div>
+             
+            <nav class="navbar navbar-default" role="navigation" ng-controller="MenuCtrl as menu">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <ul class="nav navbar-nav">
+                            <li ng-class="{ active: menu.isActive('/') }">
+                                <a href="#/">Calculadora</a>
+                            </li>
+                            <li ng-class="{ active: menu.isActive('/ranking') }">
+                                <a href="#/nuevo">Resumen Mensual</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="row">
+            <div class="col-md-5">
+                <h3>Horario de la semana</h3>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <br/>
+                        <input type="text" class="form-control" id="name" ng-model="work.newWorkWeek.name">
+                    </div>
+                    <div class="form-group">
+                        <label for="workWeek">Semana de trabajo</label>
+                        <br/>
+                        <input type="week" class="form-control" id="workWeek" ng-model="work.newWorkWeek.workWeek">
+                    </div>
+                    <div >
+                        <span>Lunes</span>
+                        <br/>
+                        <div class="form-group">
+                            <label for="mondayStart">De</label>
+                            <input type="time" class="form-control" id="mondayStart" ng-model="work.newWorkWeek.mondayStart">
+                        </div>
+                        <div class="form-group">
+                            <label for="mondayEnd">Hasta</label>
+                            <input type="time" class="form-control" id="mondayEnd" ng-model="work.newWorkWeek.mondayEnd">
+                        </div>
+                    </div>
+                    <div >
+                        <span>Martes</span>
+                        <br/>
+                        <div class="form-group">
+                            <label for="tuesdayStart">De</label>
+                            <input type="time" class="form-control" id="tuesdayStart"  ng-model="work.newWorkWeek.tuesdayStart">
+                        </div>
+                        <div class="form-group">
+                            <label for="tuesdayEnd">Hasta</label>
+                            <input type="time" class="form-control" id="tuesdayEnd" ng-model="work.newWorkWeek.tuesdayEnd">
+                        </div>
+                    </div>
+                    <div >
+                        <span>Miércoles</span>
+                        <br/>
+                        <div class="form-group">
+                            <label for="wednesdayStart">De</label>
+                            <input type="time" class="form-control" id="wednesdayStart" ng-model="work.newWorkWeek.wednesdayStart">
+                        </div>
+                        <div class="form-group">
+                            <label for="wednesdayEnd">Hasta</label>
+                            <input type="time" class="form-control" id="wednesdayEnd" ng-model="work.newWorkWeek.wednesdayEnd">
+                        </div>
+                    </div>
+                    <div >
+                        <span>Jueves</span>
+                        <br/>
+                        <div class="form-group">
+                            <label for="thursdayStart">De</label>
+                            <input type="time" class="form-control" id="thursdayStart" ng-model="work.newWorkWeek.thursdayStart">
+                        </div>
+                        <div class="form-group">
+                            <label for="thursdayEnd">Hasta</label>
+                            <input type="time" class="form-control" id="thursdayEnd" ng-model="work.newWorkWeek.thursdayEnd">
+                        </div>
+                    </div> 
+                    <div >
+                        <span>Viernes</span>
+                        <br/>
+                        <div class="form-group">
+                            <label for="fridayStart">De</label>
+                            <input type="time" class="form-control" id="fridayStart" ng-model="work.newWorkWeek.fridayStart">
+                        </div>
+                        <div class="form-group">
+                            <label for="fridayEnd">Hasta</label>
+                            <input type="time" class="form-control" id="fridayEnd" ng-model="work.newWorkWeek.fridayEnd">
+                        </div>
+
+                    </div>
+                    <div >
+                        <span>Sábado</span>
+                        <br/>
+                        <div class="form-group">
+                            <label for="saturdayStart">De</label>
+                            <input type="time" class="form-control" id="saturdayStart" ng-model="work.newWorkWeek.saturdayStart">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="saturdayEnd">Hasta</label>
+                            <input type="time" class="form-control" id="saturdayEnd" ng-model="work.newWorkWeek.saturdayEnd">
+                        </div>
+                    </div>
+                     <div >
+                        <span>Domingo</span>
+                        <br/>
+                        <div class="form-group">
+                            <label for="sundayStart">De</label>
+                            <input type="time" class="form-control" id="sundayStart" ng-model="work.newWorkWeek.sundayStart">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sundayEnd">Hasta</label>
+                            <input type="time" class="form-control" id="sundayEnd" ng-model="work.newWorkWeek.sundayEnd">
+                        </div>
+                    </div>
+                    <br/>
+                    <button type="button" class="btn btn-lg btn-primary" ng-click="work.saveWorkWeek()">
+                        <span>Guardar {{ work.week(work.newWorkWeek) }}</span>
+                    </button>
+                    <button type="button" class="btn btn-lg btn-primary">
+                        Descargar
+                    </button>
+                </form>
+            </div>
+            <div class="col-md-7">
+                <h3>Previsualización</h3>
+                <div>
+                    <span>Semana {{ work.newWorkWeek.workWeek | date: "ww, MMMM/yyyy"}}</span>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Día</th>
+                            <th>Empieza</th>
+                            <th>Termina</th>
+                            <th>Trabaja</th>
+                        </tr>
+                        <tr>
+                            <td>{{ work.newWorkWeek.name }}</td>
+                            <td>Lunes</td>
+                            <td>{{ work.newWorkWeek.mondayStart | date: "HH:mm" }}</td>
+                            <td>{{ work.newWorkWeek.mondayEnd | date: "HH:mm"}}</td>
+                            <td>{{ work.mondayTotal() | date: "HH:mm"}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ work.newWorkWeek.name }}</td>
+                            <td>Martes</td>
+                            <td>{{ work.newWorkWeek.tuesdayStart | date: "HH:mm" }}</td>
+                            <td>{{ work.newWorkWeek.tuesdayEnd | date: "HH:mm"}}</td>
+                            <td>{{ work.tuesdayTotal() | date: "HH:mm" }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ work.newWorkWeek.name }}</td>
+                            <td>Miércoles</td>
+                            <td>{{ work.newWorkWeek.wednesdayStart | date: "HH:mm" }}</td>
+                            <td>{{ work.newWorkWeek.wednesdayEnd | date: "HH:mm"}}</td>
+                            <td>{{ work.wednesdayTotal() | date: "HH:mm" }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ work.newWorkWeek.name }}</td>
+                            <td>Jueves</td>
+                            <td>{{ work.newWorkWeek.thursdayStart | date: "HH:mm" }}</td>
+                            <td>{{ work.newWorkWeek.thursdayEnd | date: "HH:mm"}}</td>
+                            <td>{{ work.thursdayTotal() | date: "HH:mm" }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ work.newWorkWeek.name }}</td>
+                            <td>Viernes</td>
+                            <td>{{ work.newWorkWeek.fridayStart | date: "HH:mm" }}</td>
+                            <td>{{ work.newWorkWeek.fridayEnd | date: "HH:mm"}}</td>
+                            <td>{{ work.fridayTotal() | date: "HH:mm" }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ work.newWorkWeek.name }}</td>
+                            <td>Sábado</td>
+                            <td>{{ work.newWorkWeek.saturdayStart | date: "HH:mm" }}</td>
+                            <td>{{ work.newWorkWeek.saturdayEnd | date: "HH:mm"}}</td>
+                            <td>{{ work.saturdayTotal() | date: "HH:mm" }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ work.newWorkWeek.name }}</td>
+                            <td>Domingo</td>
+                            <td>{{ work.newWorkWeek.sundayStart | date: "HH:mm" }}</td>
+                            <td>{{ work.newWorkWeek.sundayEnd | date: "HH:mm"}}</td>
+                            <td>{{ work.sundayTotal() | date: "HH:mm" }}</td>
+                        </tr>
+                    </table>
+                    <span >Total: {{ work.totalWeek() | date: "HH:mm"}}</span><span></span>
+                </div>
+            </div>
+            </div>
+            <hr data-brackets-id="68">
+            <div>
+                 <h3>Historial de horas</h3>
+                <button type="button" class="btn btn-lg btn-primary">Descargar</button>
+                <div>
+                    <table class="table table-striped" ng-repeat="workWeek in work.workWeeks">
+                        <thead>
+                            <tr>
+                                <td>Semana {{workWeek.workWeek | date: "ww, MMMM/yyyy"}}</td>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Día</th>
+                                <th>Empieza</th>
+                                <th>Termina</th>
+                                <th>Trabaja</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-left">{{workWeek.name}}</td>
+                                <td class="text-left">Lunes</td>
+                                <td class="text-left">{{workWeek.mondayStart | date: "HH:mm"}}</td>
+                                <td class="text-left">{{workWeek.mondayEnd | date: "HH:mm"}}</td>
+                                <td class="text-left">{{ work.mondayTotal()| date: "HH:mm"}}</td>
+                            </tr>
+                             <tr>
+                                <td class="text-left">{{workWeek.name}}</td>
+                                <td class="text-left">Martes</td>
+                                <td class="text-left">{{workWeek.tuesdayStart | date: "HH:mm"}}</td>
+                                <td class="text-left">{{workWeek.tuesdayEnd | date: "HH:mm"}}</td>
+                                <td class="text-left">{{work.tuesdayTotal()| date: "HH:mm"}}</td>
+                            </tr>
+                            </tr>
+                             <tr>
+                                <td class="text-left">{{workWeek.name}}</td>
+                                <td class="text-left">Miércoles</td>
+                                <td class="text-left">{{workWeek.wednesdayStart | date: "HH:mm"}}</td>
+                                <td class="text-left">{{workWeek.wednesdayEnd | date: "HH:mm"}}</td>
+                                <td class="text-left">{{work.wednesdayTotal()| date: "HH:mm"}}</td>
+                            </tr>
+                             <tr>
+                                <td class="text-left">{{workWeek.name}}</td>
+                                <td class="text-left">Jueves</td>
+                                <td class="text-left">{{workWeek.thursdayStart | date: "HH:mm"}}</td>
+                                <td class="text-left">{{workWeek.thursdayEnd | date: "HH:mm"}}</td>
+                                <td class="text-left">{{work.thursdayTotal()| date: "HH:mm"}}</td>
+                            </tr>
+                             <tr>
+                                <td class="text-left">{{workWeek.name}}</td>
+                                <td class="text-left">Viernes</td>
+                                <td class="text-left">{{workWeek.fridayStart | date: "HH:mm"}}</td>
+                                <td class="text-left">{{workWeek.fridayEnd | date: "HH:mm"}}</td>
+                                <td class="text-left">{{ work.fridayTotal()| date: "HH:mm"}}</td>
+                            </tr>
+                             <tr>
+                                <td class="text-left">{{workWeek.name}}</td>
+                                <td class="text-left">Sábado</td>
+                                <td class="text-left">{{workWeek.saturdayStart | date: "HH:mm"}}</td>
+                                <td class="text-left">{{workWeek.saturdayEnd | date: "HH:mm"}}</td>
+                                <td class="text-left">{{work.saturdayTotal()| date: "HH:mm"}}</td>
+                            </tr>
+                             <tr>
+                                <td class="text-left">{{workWeek.name}}</td>
+                                <td class="text-left">Domingo</td>
+                                <td class="text-left">{{workWeek.sundayStart | date: "HH:mm"}}</td>
+                                <td class="text-left">{{workWeek.sundayEnd | date: "HH:mm"}}</td>
+                                <td class="text-left">{{work.sundayTotal()| date: "HH:mm"}}</td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td>Total: {{ work.totalWeek()| date: "HH:mm"}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
